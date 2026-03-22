@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://i.imgur.com/placeholder.png" alt="Tabulion Logo" width="180"/>
+
 
 # 🏛️ Tabulion RPA
 ### *Software Intelligence for Notary Document Management*
@@ -24,6 +24,8 @@
 [![Tesseract](https://img.shields.io/badge/OCR-Tesseract-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://github.com/tesseract-ocr/tesseract)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-f59e0b?style=for-the-badge)]()
+
+<img src="Tabulion Logo.png" alt="Tabulion Logo"/>
 
 </div>
 
