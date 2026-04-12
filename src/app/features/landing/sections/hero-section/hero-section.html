@@ -1,0 +1,306 @@
+<section
+  id="hero"
+  class="hero-section relative flex min-h-screen flex-col overflow-hidden bg-background text-foreground"
+>
+  <div
+    class="hero-section__grade pointer-events-none absolute inset-0 opacity-[0.03]"
+    aria-hidden="true"
+  ></div>
+
+  @if (varreduraEstaVisivel()) {
+    <div
+      class="hero-section__varredura pointer-events-none absolute inset-x-0 top-0 z-10 h-0.5 bg-linear-to-r from-transparent via-foreground/10 to-transparent"
+      aria-hidden="true"
+    ></div>
+  }
+
+  <header
+    class="hero-section__Header-meta relative z-20 flex items-start justify-start gap-1 border-b border-border px-4 py-3 md:items-center md:justify-between md:gap-4 md:px-12"
+    [class.hero-section__Header-meta--visivel]="metadadosEstaoVisiveis()"
+  >
+    <span
+      class="hero-section__rotulo-Header text-xs uppercase tracking-[0.2em] text-muted-foreground italic"
+    >
+      Engenharia de Automação Notarial
+    </span>
+    <span class="hero-section__rotulo-Header hero-section__rotulo-Header--direita"
+      >RPA · OCR · Bots</span
+    >
+  </header>
+
+  <div
+    class="hero-section__body relative z-10 flex flex-1 flex-col justify-start overflow-hidden md:justify-center"
+  >
+    <div class="hero-section__manchete select-none px-4 pt-4 md:px-10 md:pt-0">
+      <div class="hero-section__bloco-titulo">
+        <h1
+          class="hero-section__titulo font-display text-[18vw] leading-none tracking-tight whitespace-nowrap text-foreground md:text-[16vw]"
+          aria-label="Tabulion"
+        >
+          <!-- Cada letra usa indice para controlar visibilidade e atraso da animacao. -->
+          <span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(0)"
+            [style.--atraso-letra]="atrasoLetra(0)"
+            >T</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(1)"
+            [style.--atraso-letra]="atrasoLetra(1)"
+            >A</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(2)"
+            [style.--atraso-letra]="atrasoLetra(2)"
+            >B</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(3)"
+            [style.--atraso-letra]="atrasoLetra(3)"
+            >U</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(4)"
+            [style.--atraso-letra]="atrasoLetra(4)"
+            >L</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(5)"
+            [style.--atraso-letra]="atrasoLetra(5)"
+            >I</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(6)"
+            [style.--atraso-letra]="atrasoLetra(6)"
+            >O</span
+          ><span
+            class="hero-section__letra inline-block"
+            [class.hero-section__letra--visivel]="letraEstaVisivel(7)"
+            [style.--atraso-letra]="atrasoLetra(7)"
+            >N</span
+          >
+        </h1>
+
+        <p
+          class="hero-section__subtitulo font-display text-[7vw] leading-none tracking-tight whitespace-nowrap text-muted-foreground/40 md:text-[5.5vw]"
+          [class.hero-section__subtitulo--visivel]="conteudoEstaVisivel()"
+        >
+          RPA SYSTEM
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="hero-section__diagrama hero-section__diagrama--desktop absolute right-[4vw] top-1/2 hidden h-[clamp(300px,32vw,520px)] w-[clamp(420px,48vw,780px)] md:block"
+      [class.hero-section__diagrama--visivel]="conteudoEstaVisivel()"
+      aria-hidden="true"
+    >
+      <!-- svgDiagrama referencia o elemento SVG para calcular retangulo e parallax no mousemove. -->
+      <svg
+        #svgDiagrama
+        viewBox="0 0 600 220"
+        class="hero-section__diagrama-svg block h-full w-full overflow-visible"
+        role="presentation"
+        (mousemove)="aoMoverMouseNoDiagrama($event, svgDiagrama)"
+        (mouseleave)="aoSairMouseDoDiagrama()"
+        [style.transform]="transformacaoSuperficieDiagrama()"
+      >
+        <defs>
+          <linearGradient id="hero-edge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="hsl(0 0% 20%)" stop-opacity="0.3"></stop>
+            <stop offset="50%" stop-color="hsl(0 0% 6%)" stop-opacity="0.9"></stop>
+            <stop offset="100%" stop-color="hsl(0 0% 20%)" stop-opacity="0.3"></stop>
+          </linearGradient>
+
+          <filter id="hero-glow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="coloredBlur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <g [attr.transform]="transformacaoConteudoDiagrama()">
+          <!-- ligacao representa cada conexão calculada entre nós do fluxo. -->
+          @for (ligacao of ligacoesDiagrama(); track $index) {
+            <g>
+              <line
+                [attr.x1]="ligacao.origem.x"
+                [attr.y1]="ligacao.origem.y"
+                [attr.x2]="ligacao.destino.x"
+                [attr.y2]="ligacao.destino.y"
+                class="hero-section__diagrama-linha"
+              ></line>
+
+              <circle
+                [attr.cx]="ligacao.pacoteX"
+                [attr.cy]="ligacao.pacoteY"
+                r="2"
+                class="hero-section__diagrama-pacote"
+              ></circle>
+            </g>
+          }
+
+          <!-- no representa cada etapa operacional desenhada na pipeline. -->
+          @for (no of nosDiagrama; track no.id) {
+            <g [attr.transform]="transformacaoNo(no)" class="hero-section__diagrama-no">
+              <rect
+                x="-24"
+                y="-16"
+                width="48"
+                height="32"
+                rx="0"
+                class="hero-section__diagrama-no-caixa"
+              ></rect>
+
+              <text x="0" y="-3" text-anchor="middle" class="hero-section__diagrama-no-rotulo">
+                @switch (no.id) {
+                  @case ('doc') {
+                    DOC
+                  }
+                  @case ('ocr') {
+                    OCR
+                  }
+                  @case ('cls') {
+                    CLS
+                  }
+                  @case ('bot') {
+                    BOT
+                  }
+                  @case ('cert') {
+                    CERT
+                  }
+                  @case ('out') {
+                    OUT
+                  }
+                }
+              </text>
+
+              <text x="0" y="9" text-anchor="middle" class="hero-section__diagrama-no-subrotulo">
+                @switch (no.id) {
+                  @case ('doc') {
+                    Entrada
+                  }
+                  @case ('ocr') {
+                    Tesseract
+                  }
+                  @case ('cls') {
+                    Classificar
+                  }
+                  @case ('bot') {
+                    Selenium
+                  }
+                  @case ('cert') {
+                    Certidão
+                  }
+                  @case ('out') {
+                    Arquivo
+                  }
+                }
+              </text>
+            </g>
+          }
+
+          <!-- <text x="10" y="210" class="hero-section__diagrama-legenda">RPA PIPELINE</text>
+          <text x="590" y="210" text-anchor="end" class="hero-section__diagrama-legenda">
+            TABULION v1
+          </text> -->
+        </g>
+      </svg>
+    </div>
+
+    <div
+      class="hero-section__conteudo relative grid grid-cols-1 gap-4 px-4 pb-6 pt-4 md:absolute md:inset-x-0 md:bottom-0 md:grid-cols-3 md:gap-8 md:px-12 md:pb-12"
+      [class.hero-section__conteudo--visivel]="conteudoEstaVisivel()"
+    >
+      <div class="hero-section__texto md:col-span-1">
+        <p
+          class="hero-section__introducao font-lora text-sm italic leading-relaxed text-foreground/60"
+        >
+          Onde o rigor do Direito Notarial encontra a precisão da Engenharia de Software.
+        </p>
+        <p
+          class="hero-section__texto-body mt-1 max-w-xs text-xs leading-relaxed text-foreground/50 underline"
+        >
+          Automação resiliente aplicada à serventia de Cerro Azul, PR, elevando a Fé Pública ao
+          próximo nível.
+        </p>
+
+        <div
+          class="hero-section__acoes mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 md:mt-6 md:gap-x-4 md:gap-y-3"
+        >
+          <a
+            class="hero-section__botao inline-flex w-full items-center justify-center bg-foreground px-4 py-3 text-xs uppercase tracking-widest text-background transition-opacity hover:opacity-80 md:w-auto md:px-6"
+            href="#contato"
+            >Ver aonde começamos</a
+          >
+          <a
+            class="hero-section__link-secundario inline-block w-full text-xs text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground md:w-auto"
+            href="#fluxo"
+            >ou explore o fluxo operacional →</a
+          >
+        </div>
+      </div>
+
+      <div class="hero-section__espaco hidden md:block" aria-hidden="true"></div>
+
+      <div
+        class="hero-section__destaques md:col-span-1 flex flex-col items-start justify-end gap-3 md:items-end"
+      >
+        <div class="hero-section__destaque">
+          <p
+            class="hero-section__destaque-titulo font-cinzel text-xs uppercase tracking-widest text-foreground md:text-right"
+          >
+            AUTOMAÇÃO COMPLETA
+          </p>
+          <p
+            class="hero-section__destaque-detalhe mt-0.5 text-xs text-muted-foreground md:text-right"
+          >
+            Gestão · OCR · Certidões
+          </p>
+        </div>
+
+        <div class="hero-section__destaque">
+          <p
+            class="hero-section__destaque-titulo font-cinzel text-xs uppercase tracking-widest text-foreground md:text-right"
+          >
+            Operação
+          </p>
+          <p
+            class="hero-section__destaque-detalhe mt-0.5 text-xs text-muted-foreground md:text-right"
+          >
+            24/7 · Resiliente
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer
+    class="hero-section__footer relative z-20 mt-2 flex items-start justify-start gap-1 border-t border-border px-4 py-3 md:mt-0 md:items-center md:justify-between md:gap-4 md:px-12"
+    [class.hero-section__footer--visivel]="metadadosEstaoVisiveis()"
+  >
+    <span class="hero-section__rotulo-footer text-xs text-muted-foreground"
+      >Python · Selenium · Tesseract OCR</span
+    >
+
+    <div
+      class="hero-section__indicador-rolagem inline-flex items-center gap-1 text-xs text-muted-foreground"
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 12 12" class="hero-section__icone-rolagem h-3 w-3">
+        <path
+          d="M2 7.5 7.5 2M4.5 2H7.5V5"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.2"
+        ></path>
+      </svg>
+      <span>scroll</span>
+    </div>
+  </footer>
+</section>
+
