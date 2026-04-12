@@ -1,0 +1,62 @@
+<section id="solucao" class="solution-section border-b border-border bg-background">
+  <div class="px-8 pb-0 pt-20 md:px-16">
+    <div
+      #cabecalhoSolucao
+      class="solution-section__cabecalho"
+      [class.solution-section__cabecalho--visivel]="cabecalhoEstaVisivel()"
+    >
+      <p class="mb-6 font-sans text-xs tracking-[0.25em] text-muted-foreground uppercase">
+        03 — O que o Tabulion Faz
+      </p>
+
+      <h2
+        class="max-w-3xl font-cinzel text-3xl leading-tight font-semibold text-foreground md:text-5xl"
+      >
+        Três Módulos.
+        <br />
+        Uma Serventia que Se Move Sozinha.
+      </h2>
+
+      <div class="solution-section__regua mt-8 h-px w-12 bg-foreground/20"></div>
+    </div>
+  </div>
+
+  <div class="mt-12 border-t border-border">
+    @for (modulo of modulos; track modulo.id) {
+      <div
+        #linhaSolucao
+        class="solution-section__linha grid grid-cols-1 gap-8 border-b border-border px-8 py-12 transition-colors lg:grid-cols-[auto_2fr_3fr] lg:gap-16 md:px-16"
+        [class.solution-section__linha--visivel]="linhaEstaVisivel($index)"
+        [attr.data-indice-linha]="$index"
+        [style.--atraso-linha]="atrasoLinha($index)"
+      >
+        <div class="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
+          <span class="font-cinzel text-5xl font-bold text-foreground/10">{{ modulo.id }}</span>
+        </div>
+
+        <div>
+          <p class="mb-2 font-sans text-xs tracking-widest text-muted-foreground uppercase">
+            {{ modulo.subtitulo }}
+          </p>
+
+          <h3 class="mb-4 font-cinzel text-xl leading-snug text-foreground md:text-2xl">
+            {{ modulo.titulo }}
+          </h3>
+
+          <div class="mt-4 flex flex-col gap-1.5">
+            @for (tag of modulo.tags; track tag) {
+              <span class="flex items-center gap-2 font-sans text-xs text-foreground/50">
+                <span class="inline-block h-px w-4 bg-border"></span>
+                {{ tag }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <p class="self-center font-sans text-base leading-relaxed text-foreground/65">
+          {{ modulo.descricao }}
+        </p>
+      </div>
+    }
+  </div>
+</section>
