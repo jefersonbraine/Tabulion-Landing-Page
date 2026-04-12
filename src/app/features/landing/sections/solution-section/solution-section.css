@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+
+.solution-section__cabecalho {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.solution-section__cabecalho--visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.solution-section__regua {
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.solution-section__cabecalho--visivel .solution-section__regua {
+  width: 3rem;
+}
+
+.solution-section__linha {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease;
+  transition-delay: var(--atraso-linha, 0s);
+}
+
+.solution-section__linha--visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.solution-section__linha:hover {
+  background: hsl(var(--secondary) / 0.2);
+}
