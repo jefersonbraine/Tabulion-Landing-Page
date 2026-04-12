@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.footer-section {
+  position: relative;
+}
+
+.footer-section__logo {
+  flex: none;
+}
