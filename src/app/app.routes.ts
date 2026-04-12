@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './features/home/home-page.component';
+import { Landing } from './features/landing/landing';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    component: Landing,
   },
   {
     path: '**',
