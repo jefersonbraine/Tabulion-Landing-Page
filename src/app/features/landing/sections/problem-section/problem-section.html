@@ -1,0 +1,57 @@
+<section id="problema" class="problem-section section-dark border-b border-white/10">
+  <div class="px-8 pb-0 pt-20 md:px-16">
+    <div>
+      <p class="mb-6 text-xs font-sans tracking-[0.25em] text-white/30 uppercase">
+        02 — O Dia de Trabalho Antes do Tabulion
+      </p>
+
+      <h2 class="max-w-3xl font-cinzel text-3xl leading-tight font-semibold text-white md:text-5xl">
+        6h00 de Trabalho Técnico
+        <br />
+        Desperdiçado Todo Dia
+      </h2>
+
+      <div class="mt-8 mb-6 h-px w-12 bg-white/20"></div>
+
+      <p class="max-w-xl font-lora text-base leading-relaxed text-white/50 italic">
+        Em uma serventia de médio porte, a rotina diária antes do Tabulion consumia quase um turno
+        completo de trabalho qualificado em tarefas que uma máquina poderia — e deveria — executar.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-12 border-t border-white/10">
+    @for (item of rotinaAntes; track item.hora + item.tarefa) {
+      <div
+        class="problem-section__linha grid grid-cols-1 gap-3 border-b border-white/10 px-8 py-6 transition-colors md:grid-cols-[5rem_1fr_auto] md:gap-12 md:px-16"
+      >
+        <span class="self-center font-mono text-xs text-white/25">{{ item.hora }}</span>
+
+        <p class="self-center font-sans text-sm leading-relaxed text-white/70">
+          {{ item.tarefa }}
+        </p>
+
+        <span
+          class="self-center border border-white/10 px-3 py-1 font-cinzel text-xs text-white/30 whitespace-nowrap"
+        >
+          {{ item.custo }}
+        </span>
+      </div>
+    }
+
+    <div class="bg-white/5 px-8 py-6 md:px-16">
+      <p class="font-cinzel text-sm tracking-wide text-white/60">
+        Total: <span class="font-semibold text-white">~6h00min</span> — em tarefas 100%
+        automatizáveis
+      </p>
+    </div>
+  </div>
+
+  <div class="px-8 py-14 md:px-16">
+    <blockquote class="max-w-2xl border-l-2 border-white/20 pl-8">
+      <p class="font-lora text-lg leading-relaxed text-white/60 italic">
+        "O problema não era falta de esforço — era falta de ferramenta certa para o trabalho certo."
+      </p>
+    </blockquote>
+  </div>
+</section>

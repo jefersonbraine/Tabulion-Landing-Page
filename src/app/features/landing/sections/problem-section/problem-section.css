@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+.problem-section__linha:hover {
+  background: rgb(255 255 255 / 0.03);
+}
