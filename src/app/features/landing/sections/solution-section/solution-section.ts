@@ -91,6 +91,13 @@ export class SolutionSection {
       return;
     }
 
+    // Fallback para ambientes sem IntersectionObserver (ex.: testes em jsdom).
+    if (typeof IntersectionObserver === 'undefined') {
+      this.cabecalhoVisivel.set(true);
+      this.indicesLinhasVisiveis.set(this.modulos.map((_, indice) => indice));
+      return;
+    }
+
     this.iniciarObservadorCabecalho();
     this.iniciarObservadorLinhas();
   }
