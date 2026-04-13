@@ -1,0 +1,81 @@
+<section id="caso" class="case-study-section border-b border-border bg-background">
+  <div class="px-8 pb-0 pt-20 md:px-16">
+    <div
+      #cabecalhoCaso
+      class="case-study-section__cabecalho"
+      [class.case-study-section__cabecalho--visivel]="cabecalhoEstaVisivel()"
+    >
+      <p class="mb-6 font-sans text-xs tracking-[0.25em] text-muted-foreground uppercase">
+        04 — Laboratório de Excelência
+      </p>
+
+      <h2
+        class="max-w-3xl font-cinzel text-3xl leading-tight font-semibold text-foreground md:text-5xl lg:text-6xl"
+      >
+        Tabelionato de Notas e Protesto de Títulos
+      </h2>
+
+      <p class="mt-3 font-lora text-xl text-muted-foreground italic md:text-2xl">
+        Cerro Azul — Paraná
+      </p>
+
+      <div class="case-study-section__regua my-8 h-px w-12 bg-foreground/20"></div>
+
+      <p class="max-w-2xl font-sans text-base leading-relaxed text-foreground/70">
+        A serventia de Cerro Azul foi a primeira prova de conceito do Tabulion no ambiente real de
+        um cartório em plena operação. O resultado foi uma
+        <strong class="font-medium text-foreground"> revolução silenciosa</strong>: a equipe liberou
+        horas de trabalho mecânico e direcionou sua atenção para onde a Fé Pública realmente exige —
+        o atendimento ao cliente e a análise jurídica.
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="mt-12 grid grid-cols-1 gap-0 border-t border-border px-8 py-16 sm:grid-cols-2 lg:grid-cols-4 md:px-16"
+  >
+    @for (resultado of resultadosCaso; track resultado.rotulo) {
+      <article
+        #cardResultado
+        class="case-study-section__card border-border px-6 py-10 transition-all duration-300"
+        [class.case-study-section__card--visivel]="cardEstaVisivel($index)"
+        [attr.data-indice-card]="$index"
+        [style.--atraso-card]="atrasoCard($index)"
+      >
+        @if (resultado.exibicaoFixa) {
+          <p class="case-study-section__valor mb-2 font-cinzel text-5xl font-bold text-foreground">
+            {{ resultado.exibicaoFixa }}
+          </p>
+        } @else {
+          <p class="case-study-section__valor mb-2 font-cinzel text-5xl font-bold text-foreground">
+            {{ resultado.prefixo }}{{ valorContador($index) }}{{ resultado.sufixo }}
+          </p>
+        }
+
+        <p class="mb-3 font-sans text-xs tracking-widest text-muted-foreground uppercase">
+          {{ resultado.rotulo }}
+        </p>
+
+        <p class="font-sans text-sm leading-relaxed text-foreground/60">
+          {{ resultado.descricao }}
+        </p>
+      </article>
+    }
+  </div>
+
+  <div class="px-8 pb-20 md:px-16">
+    <blockquote class="max-w-2xl border-l-2 border-foreground/20 py-2 pl-8">
+      <p class="font-lora text-lg leading-relaxed text-foreground/80 italic md:text-xl">
+        "O Tabulion não apenas organiza — ele executa. Enquanto o robô obtém certidões online de
+        forma autônoma, os atendentes focam no que nenhuma máquina substitui: a relação de confiança
+        com o cliente."
+      </p>
+
+      <cite
+        class="mt-4 block font-sans text-xs tracking-widest text-muted-foreground uppercase not-italic"
+      >
+        Experiência em Campo — Cerro Azul, PR
+      </cite>
+    </blockquote>
+  </div>
+</section>
