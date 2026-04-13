@@ -24,7 +24,7 @@ export class ProblemSection {
     {
       hora: '09h30',
       tarefa: 'Operador salvava manualmente 200+ imagens recebidas pelo WhatsApp',
-      custo: '~2h',
+      custo: '~0.30h',
     },
     {
       hora: '10h00',
@@ -34,7 +34,7 @@ export class ProblemSection {
     {
       hora: '13h00',
       tarefa: 'Acesso manual à Receita Federal, TRF4, CNDT — um CPF por vez',
-      custo: '~3h',
+      custo: '~2h',
     },
     {
       hora: '14h00',

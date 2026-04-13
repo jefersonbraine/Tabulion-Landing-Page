@@ -65,7 +65,19 @@
 ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: #999; }
 
+html,
+body {
+  -ms-overflow-style: none; /* IE/Edge antigo */
+  scrollbar-width: none;    /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;            /* Chrome/Safari/Edge */
+}
+
 /* Section rule */
+
 .rule {
   width: 100%;
   height: 1px;
