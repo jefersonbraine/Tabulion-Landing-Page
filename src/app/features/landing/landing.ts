@@ -4,6 +4,7 @@ import { FooterSection } from './sections/footer-section/footer-section';
 import { ProblemSection } from './sections/problem-section/problem-section';
 import { SolutionSection } from './sections/solution-section/solution-section';
 import { CaseStudySection } from './sections/case-study-section/case-study-section';
+import { ComplianceSection } from './sections/compliance-section/compliance-section';
 import { SpecialistSection } from './sections/specialist-section/specialist-section';
 
 @Component({
@@ -13,6 +14,7 @@ import { SpecialistSection } from './sections/specialist-section/specialist-sect
     ProblemSection,
     SolutionSection,
     CaseStudySection,
+    ComplianceSection,
     SpecialistSection,
     FooterSection,
   ],
