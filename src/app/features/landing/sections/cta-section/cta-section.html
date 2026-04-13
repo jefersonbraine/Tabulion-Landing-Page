@@ -1,0 +1,64 @@
+<section id="contato" class="cta-section section-dark border-t border-white/10">
+  <div class="px-8 py-24 md:px-16 md:py-36">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+      <div #cabecalhoCta class="cta-copy" [class.cta-copy--visivel]="cabecalhoEstaVisivel()">
+        <p class="cta-kicker font-sans text-xs tracking-[0.25em] uppercase mb-8">
+          09 — Próxima Etapa
+        </p>
+        <h2
+          class="cta-title font-cinzel text-4xl font-semibold leading-none md:text-6xl lg:text-7xl"
+        >
+          Sua Serventia
+          <br />
+          Merece Isso.
+        </h2>
+        <div class="cta-rule h-px bg-white/20 mb-8"></div>
+        <p class="cta-intro font-lora italic text-base leading-relaxed max-w-md">
+          O Tabulion não é uma promessa de tecnologia futura. É uma solução testada em campo, que
+          está operando hoje em uma serventia real no Paraná.
+        </p>
+      </div>
+
+      <div
+        #painelContato
+        class="cta-panel flex flex-col justify-center gap-6"
+        [class.cta-panel--visivel]="painelEstaVisivel()"
+      >
+        <div class="border border-white/15 p-8 md:p-10">
+          <h3 class="font-cinzel text-lg font-semibold text-white mb-2">
+            Conversa Entre Especialistas
+          </h3>
+          <p class="mb-8 font-lora text-sm italic leading-relaxed text-white/45">
+            Se você é Tabelião, Registrador ou gestor de serventia e reconhece os problemas
+            descritos aqui, a conversa começa por aqui.
+          </p>
+
+          <div class="flex flex-col gap-3">
+            <a
+              href="https://www.linkedin.com/in/jefersonbraineleal"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-start  gap-3 border border-white bg-white px-8 py-4 font-sans text-xs tracking-widest text-black uppercase transition-colors hover:bg-white/90"
+            >
+              LinkedIn — Jeferson Braine Leal →
+            </a>
+            <a
+              href="mailto:jefersonbraineleal@gmail.com"
+              class="inline-flex items-start gap-3 border border-white/20 px-8 py-4 font-sans text-xs tracking-widest text-white/70 uppercase transition-colors hover:border-white/40 hover:text-white"
+            >
+              entrar em contato por email →
+            </a>
+          </div>
+        </div>
+
+        <p
+          #notaFinal
+          class="cta-note font-sans text-xs text-white/20"
+          [class.cta-note--visivel]="notaEstaVisivel()"
+        >
+          Processamento 100% local · LGPD · Sem SaaS · Sem mensalidade
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -8,6 +8,7 @@ import { ComplianceSection } from './sections/compliance-section/compliance-sect
 import { GovernmentResilienceSection } from './sections/government-resilience-section/government-resilience-section';
 import { SpecialistSection } from './sections/specialist-section/specialist-section';
 import { RoadmapSection } from './sections/roadmap-section/roadmap-section';
+import { CtaSection } from './sections/cta-section/cta-section';
 
 @Component({
   selector: 'app-landing',
@@ -20,6 +21,7 @@ import { RoadmapSection } from './sections/roadmap-section/roadmap-section';
     GovernmentResilienceSection,
     SpecialistSection,
     RoadmapSection,
+    CtaSection,
     FooterSection,
   ],
   templateUrl: './landing.html',
