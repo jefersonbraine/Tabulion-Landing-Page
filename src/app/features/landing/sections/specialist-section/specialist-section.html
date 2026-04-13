@@ -1,0 +1,73 @@
+<section id="especialista" class="specialist-section border-b border-border bg-background">
+  <div class="grid grid-cols-1 gap-16 px-8 py-20 lg:grid-cols-2 lg:gap-24 md:px-16 md:py-28">
+    <div
+      #cabecalhoEspecialista
+      class="specialist-section__cabecalho"
+      [class.specialist-section__cabecalho--visivel]="cabecalhoEstaVisivel()"
+    >
+      <p class="mb-8 font-sans text-xs tracking-[0.25em] text-muted-foreground uppercase">
+        05 - O Arquiteto
+      </p>
+
+      <p class="mb-3 font-lora text-sm tracking-wide text-muted-foreground italic">
+        Arquiteto Notarial
+      </p>
+
+      <h2
+        class="font-cinzel text-3xl leading-tight font-semibold text-foreground md:text-4xl lg:text-5xl"
+      >
+        Jeferson
+        <br />
+        Braine Leal
+      </h2>
+
+      <div class="specialist-section__regua my-8 h-px w-10 bg-foreground/20"></div>
+
+      <p class="max-w-md font-sans text-base leading-relaxed text-foreground/70">
+        O Tabulion não foi codificado por um desenvolvedor externo que estudou cartórios à
+        distância. Foi construído por quem vive o
+        <strong class="font-medium text-foreground">Código de Normas</strong>, assina com o
+        <strong class="font-medium text-foreground">selo</strong>, conhece a responsabilidade civil
+        da <strong class="font-medium text-foreground">Fé Pública</strong> e entende que um erro de
+        classificação documental tem consequências jurídicas reais.
+      </p>
+
+      <p class="mt-4 max-w-md font-sans text-base leading-relaxed text-foreground/70">
+        A interseção entre Direito Notarial e Engenharia de Software não é uma metáfora de marketing
+        - é a origem e a garantia de qualidade de cada linha de código desta plataforma.
+      </p>
+    </div>
+
+    <div
+      class="specialist-section__coluna-direita flex flex-col justify-center"
+      [class.specialist-section__coluna-direita--visivel]="cabecalhoEstaVisivel()"
+    >
+      <div class="border border-border divide-y divide-border">
+        @for (credencial of credenciais; track credencial.label) {
+          <div
+            #linhaCredencial
+            class="specialist-section__linha-credencial grid grid-cols-[1fr_2fr] gap-4 px-6 py-5"
+            [class.specialist-section__linha-credencial--visivel]="credencialEstaVisivel($index)"
+            [attr.data-indice-credencial]="$index"
+            [style.--atraso-credencial]="atrasoCredencial($index)"
+          >
+            <span
+              class="self-center font-sans text-xs tracking-widest text-muted-foreground uppercase"
+            >
+              {{ credencial.label }}
+            </span>
+
+            <span class="font-lora text-base text-foreground">{{ credencial.value }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="specialist-section__principio mt-8 border-l-2 border-foreground/20 py-2 pl-6">
+        <p class="font-lora text-base leading-relaxed text-foreground/70 italic">
+          "Não é um desenvolvedor vendendo código. É um Substituto Notarial apresentando o futuro da
+          gestão de serventias."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
