@@ -7,6 +7,7 @@ import { CaseStudySection } from './sections/case-study-section/case-study-secti
 import { ComplianceSection } from './sections/compliance-section/compliance-section';
 import { GovernmentResilienceSection } from './sections/government-resilience-section/government-resilience-section';
 import { SpecialistSection } from './sections/specialist-section/specialist-section';
+import { RoadmapSection } from './sections/roadmap-section/roadmap-section';
 
 @Component({
   selector: 'app-landing',
@@ -18,6 +19,7 @@ import { SpecialistSection } from './sections/specialist-section/specialist-sect
     ComplianceSection,
     GovernmentResilienceSection,
     SpecialistSection,
+    RoadmapSection,
     FooterSection,
   ],
   templateUrl: './landing.html',
