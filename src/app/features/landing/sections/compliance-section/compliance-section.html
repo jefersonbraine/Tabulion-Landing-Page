@@ -1,0 +1,173 @@
+<section id="compliance" class="compliance-section border-b border-border bg-background">
+  <div class="px-8 py-20 md:px-16 md:py-28">
+    <!-- Header -->
+    <div
+      #cabecalhoCompliance
+      class="compliance-section__cabecalho mb-16"
+      [class.compliance-section__cabecalho--visivel]="cabecalhoEstaVisivel()"
+    >
+      <p class="text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6 font-sans">
+        06 - Soberania e Conformidade
+      </p>
+
+      <h2
+        class="font-cinzel text-3xl leading-tight font-semibold text-foreground max-w-2xl md:text-4xl"
+      >
+        Cada Ação do Robô é Rastreável.
+        <br />
+        Cada Dado, Soberano.
+      </h2>
+
+      <div class="compliance-section__regua w-12 h-px bg-foreground/20 mt-8"></div>
+    </div>
+
+    <!-- Grid: Badges + Audit Log -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+      <!-- Badges Grid -->
+      <div class="grid grid-cols-1 gap-px sm:grid-cols-2 bg-border">
+        @for (badge of badges; track badge.label) {
+          <div
+            #cardBadge
+            class="compliance-section__badge-card bg-background p-8 flex flex-col gap-4"
+            [class.compliance-section__badge-card--visivel]="badgeEstaVisivel($index)"
+            [attr.data-indice-badge]="$index"
+            [style.--atraso-badge]="atrasoBadge($index)"
+          >
+            <div class="compliance-section__badge-icon" aria-hidden="true">
+              @switch (badge.icon) {
+                @case ('security') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path
+                      d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                }
+
+                @case ('lock') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <rect
+                      x="3"
+                      y="11"
+                      width="18"
+                      height="11"
+                      rx="2"
+                      ry="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></rect>
+                    <path
+                      d="M7 11V7a5 5 0 0 1 10 0v4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                }
+
+                @case ('assignment_turned_in') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path
+                      d="M9 11.5 11 13.5 15 9.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path d="M14.5 2V7.5H20" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                }
+
+                @default {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <ellipse
+                      cx="12"
+                      cy="5"
+                      rx="8"
+                      ry="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></ellipse>
+                    <path
+                      d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                }
+              }
+            </div>
+
+            <div>
+              <p class="font-cinzel text-sm font-semibold text-foreground tracking-wide mb-1">
+                {{ badge.label }}
+              </p>
+
+              <p class="font-sans text-xs text-muted-foreground leading-relaxed">
+                {{ badge.sub }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Audit Log -->
+      <div class="flex flex-col justify-center gap-4">
+        <p class="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-2">
+          Transparência Técnica - Log de Auditoria
+        </p>
+
+        <div
+          class="compliance-section__audit-log border border-border bg-foreground/2 font-mono text-xs overflow-hidden"
+        >
+          <!-- Audit Log Header -->
+          <div class="px-4 py-2 border-b border-border flex items-center gap-2 bg-foreground/3">
+            <span class="w-2 h-2 rounded-full bg-foreground/20 inline-block"></span>
+            <span class="text-muted-foreground tracking-widest uppercase text-[10px]">
+              Audit Log - Tabulion Runtime
+            </span>
+          </div>
+
+          <!-- Audit Log Entries -->
+          <div class="divide-y divide-border">
+            @for (log of auditLogs; track log.action + log.ts) {
+              <div
+                #linhaAuditLog
+                class="compliance-section__audit-entry px-4 py-2.5 grid grid-cols-[5rem_1fr_1fr_3rem] gap-3"
+                [class.compliance-section__audit-entry--visivel]="auditLogEstaVisivel($index)"
+              >
+                <span class="text-muted-foreground/60">{{ log.ts }}</span>
+                <span class="text-foreground/70">{{ log.action }}</span>
+                <span class="text-muted-foreground/50 truncate">{{ log.target }}</span>
+                <span class="text-green-600 font-semibold text-[10px] tracking-wider self-center">
+                  {{ log.status }}
+                </span>
+              </div>
+            }
+          </div>
+
+          <!-- Audit Log Footer -->
+          <div class="px-4 py-2 border-t border-border flex items-center gap-2">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+            <span class="text-muted-foreground/50 text-[10px] tracking-widest">
+              SISTEMA OPERACIONAL
+            </span>
+          </div>
+        </div>
+
+        <p class="font-sans text-xs text-muted-foreground/60 leading-relaxed mt-2 max-w-sm">
+          Cada operação executada pelo Tabulion é registrada com timestamp, ação, alvo e status.
+          Rastreabilidade total para a responsabilidade civil do Tabelião.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
