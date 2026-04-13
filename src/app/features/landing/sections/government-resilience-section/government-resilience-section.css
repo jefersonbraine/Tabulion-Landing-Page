@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.government-resilience-section__cabecalho {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.government-resilience-section__cabecalho--visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.government-resilience-section__regua {
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.government-resilience-section__cabecalho--visivel .government-resilience-section__regua {
+  width: 3rem;
+}
+
+.government-resilience-section__portal-card,
+.government-resilience-section__pilar-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease;
+}
+
+.government-resilience-section__portal-card {
+  transition-delay: var(--atraso-portal, 0s);
+}
+
+.government-resilience-section__pilar-card {
+  transition-delay: var(--atraso-pilar, 0s);
+}
+
+.government-resilience-section__portal-card--visivel,
+.government-resilience-section__pilar-card--visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.government-resilience-section__portal-card:hover {
+  background: hsl(var(--secondary) / 0.3);
+}
+
+.government-resilience-section__pilar-card:hover {
+  background: hsl(var(--secondary) / 0.2);
+}
