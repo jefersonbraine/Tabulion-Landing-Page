@@ -1,0 +1,79 @@
+:host {
+  display: block;
+}
+
+.case-study-section__cabecalho {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.case-study-section__cabecalho--visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-study-section__regua {
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.case-study-section__cabecalho--visivel .case-study-section__regua {
+  width: 3rem;
+}
+
+.case-study-section__card {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+  transition-delay: var(--atraso-card, 0s);
+  border-bottom-width: 1px;
+}
+
+.case-study-section__card--visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-study-section__valor {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.case-study-section__card--visivel .case-study-section__valor {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-study-section__card:hover {
+  background: hsl(var(--secondary) / 0.3);
+}
+
+@media (min-width: 640px) {
+  .case-study-section__card {
+    border-bottom-width: 0;
+    border-right-width: 1px;
+  }
+
+  .case-study-section__card:nth-child(2n) {
+    border-right-width: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .case-study-section__card {
+    border-right-width: 1px;
+  }
+
+  .case-study-section__card:last-child {
+    border-right-width: 0;
+  }
+}
