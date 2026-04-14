@@ -25,7 +25,7 @@
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-f59e0b?style=for-the-badge)]()
 
-<img src="src\assets\tabulion-banner.png" alt="Tabulion Logo"/>
+<img src="public\assets\tabulion-banner.png" alt="Tabulion Logo"/>
 
 </div>
 
